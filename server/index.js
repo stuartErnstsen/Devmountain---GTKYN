@@ -1,7 +1,8 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const authCtrl = require('./controllers/auth/authController')
-const PORT = 5555
+const { PORT } = process.env
 
 app.use(express.json())
 
