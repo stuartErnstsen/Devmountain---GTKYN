@@ -29,6 +29,6 @@ module.exports = {
 
         const db = req.app.get('db')
 
-        const alreadyExists = db.
+        // const alreadyExists = db.
     }
 }
