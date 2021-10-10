@@ -1,3 +1,3 @@
-select g.*, ua.username, ua.email, ua.hash from gtkyn_users g
+select g.*, ua.* from gtkyn_users g
 join users_auth ua on ua.user_id = g.user_id
-where username = LOWER(${usernameInput}) or email = LOWER(${emailInput});
+where lower(username) = LOWER(${usernameOrEmailInput}) or lower(email) = LOWER(${usernameOrEmailInput});

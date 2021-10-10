@@ -33,6 +33,7 @@ massive({
 
     //Authentication endpoints
     app.put('/auth/login', authCtrl.login)
+    app.post('/auth/register', authCtrl.register)
 
 
     app.listen(SERVER_PORT, () => console.log(`Hippity Hoppity your server is poppening on port: ${SERVER_PORT}`))

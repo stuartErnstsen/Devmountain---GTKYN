@@ -1,3 +1,4 @@
+drop table if exists gtkyn_users, users_auth;
 
 --TABLE CREATION SEEDS =====================================================
 create table gtkyn_users (
@@ -8,7 +9,7 @@ create table gtkyn_users (
 
 create table users_auth (
   auth_id serial primary key,
-  user_id int references gtkyn_users(user_id),
+  user_id int references gtkyn_users(user_id) on delete cascade,
   username varChar(20) not null unique,
   email varChar(255) not null unique,
   hash text not null
@@ -34,4 +35,5 @@ insert into users_auth (
   'doom@doom.com',
   '123'
 );
+
 
