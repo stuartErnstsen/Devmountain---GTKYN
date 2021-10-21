@@ -28,6 +28,7 @@ const Auth = props => {
     const handleRegister = (e) => {
         e.preventDefault()
         console.log('REGISTER')
+
     }
 
     return (
