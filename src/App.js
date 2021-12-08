@@ -1,17 +1,20 @@
-import './App.css'
-import Auth from './components/Auth/Auth'
-import Home from './components/Home/Home'
-import { Route, Switch } from 'react-router-dom'
+import "./App.css";
+import Auth from "./components/Auth/Auth";
+import Home from "./components/Home/Home";
+import { useRoutes } from "react-router-dom";
 
 function App() {
-  return (
-    <div className="App">
-      <Switch>
-        <Route exact path='/' component={Auth} />
-        <Route exact path='/home' component={Home} />
-      </Switch>
-    </div>
-  );
+  return useRoutes([
+    { path: "/", element: <Auth /> },
+    {
+      path: "home",
+      element: <Home />,
+      children: [
+        { index: true, element: <div>first</div> },
+        { path: "secondChild", element: <div>second</div> },
+      ],
+    },
+  ]);
 }
 
 export default App;

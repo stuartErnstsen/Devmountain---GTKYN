@@ -1,0 +1,30 @@
+.auth-container {
+    position: relative;
+    height: 100vh;
+    width: 40vw;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.auth-container-background-blur {
+    position: absolute;
+    content: '';
+    display: block;
+    height: inherit;
+    width: inherit;
+    z-index: -1;
+    backdrop-filter: blur(5px);
+}
+
+.auth-container::before {
+    content: '';
+    display: block;
+    height: 300px;
+    width: 300px;
+    border-radius: 100vw;
+    background: rgb(236, 65, 53);
+    position: absolute;
+    z-index: -1;
+    top: 10vh;
+    right: 0;
+    transform: translateX(75%);
+}
