@@ -29,7 +29,7 @@ module.exports = {
     //Creating user object cookie for user session
     req.session.user = userFound;
 
-    res.status(200).send(req.session.user);
+    return res.status(200).send(req.session.user);
   },
   register: async (req, res) => {
     //Redundancy to make sure reg values are not empty
@@ -47,7 +47,13 @@ module.exports = {
       emailInput,
       usernameInput,
       passwordInput,
+      verifyPasswordInput,
     } = req.body;
+
+    //Checking if both passwords entered match exactly
+    if (passwordInput !== verifyPasswordInput) {
+      return res.status(409).send("Passwords do not match.");
+    }
 
     //Bringing in instance of db and checking if the username or email already exists before registering
     const db = req.app.get("db");
@@ -86,7 +92,7 @@ module.exports = {
     //Creating user object cookie for user session
     req.session.user = newUser;
     //Sending user obj back to front end
-    res.status(200).send(req.session.user);
+    return res.status(200).send(req.session.user);
   },
   getCurrentUser: (req, res) => {
     console.log(req.session.user);
@@ -98,6 +104,6 @@ module.exports = {
   },
   logout: (req, res) => {
     req.session.destroy();
-    res.status(200).send(null);
+    return res.status(200).send(null);
   },
 };
